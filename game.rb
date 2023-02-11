@@ -37,5 +37,6 @@ class Game
   def swap_guessed_lines(letter)
     indexes = @word.chars.each_with_index.select { |char, _index| char == letter }.map { |array| array[1] }
     indexes.each { |index| @lines[index] = letter }
+    @lines
   end
 end
