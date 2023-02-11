@@ -10,6 +10,20 @@ class Game
     @number_of_guesses = 10
     @lines = '_' * word.length
     @guessed_letters = ''
+    puts @word
+  end
+
+  def word_guessed?
+    !@lines.include?('_')
+  end
+
+  def play
+    until word_guessed? || @number_of_guesses.zero?
+      puts "Guessed letters: #{@guessed_letters}"
+      puts "Guesses left: #{@number_of_guesses}"
+      puts @lines
+      guess
+    end
   end
 
   def guess
@@ -37,6 +51,5 @@ class Game
   def swap_guessed_lines(letter)
     indexes = @word.chars.each_with_index.select { |char, _index| char == letter }.map { |array| array[1] }
     indexes.each { |index| @lines[index] = letter }
-    @lines
   end
 end

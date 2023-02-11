@@ -3,3 +3,4 @@
 require './game'
 
 hangman = Game.new
+hangman.play
