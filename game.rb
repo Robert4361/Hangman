@@ -24,6 +24,8 @@ class Game
       puts @lines
       guess
     end
+    puts 'Congratulations, you won!' if word_guessed?
+    puts "You're out of tries, you'll win next time!" if @number_of_guesses.zero?
   end
 
   def guess
