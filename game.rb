@@ -27,6 +27,9 @@ class Game
 
   def from_json
     file = File.read('./save.json')
+  rescue StandardError
+    puts 'There is no such file'
+  else
     data_hash = JSON.parse(file)
     @word = data_hash['word']
     @lines = data_hash['lines']
