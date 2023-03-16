@@ -26,6 +26,15 @@ class Game
     file.close
   end
 
+  def from_json
+    file = File.read('./save.json')
+    data_hash = JSON.parse(file)
+    @word = data_hash['word']
+    @lines = data_hash['lines']
+    @guessed_letters = data_hash['guessed_letters']
+    @number_of_guesses = data_hash['number_of_guesses']
+  end
+
   def word_guessed?
     !@lines.include?('_')
   end
