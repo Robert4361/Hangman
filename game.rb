@@ -40,6 +40,7 @@ class Game
   end
 
   def play
+    load_game
     until word_guessed? || @number_of_guesses.zero?
       puts "Guessed letters: #{@guessed_letters}"
       puts "Guesses left: #{@number_of_guesses}"
@@ -62,6 +63,12 @@ class Game
   end
 
   private
+
+  def load_game
+    puts 'Do you want to load your last game? 1-yes, 0-no'
+    load = gets.chomp
+    from_json if load == '1'
+  end
 
   def guess_letter
     puts 'Write your guess'
