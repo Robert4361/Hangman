@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'json'
 # This class is responsible for playing the game
 class Game
   attr_accessor :lines, :word
@@ -11,6 +12,18 @@ class Game
     @lines = '_' * word.length
     @guessed_letters = ''
     puts @word
+  end
+
+  def to_json(*_args)
+    serialized_class = JSON.dump({
+                                   word: @word,
+                                   number_of_guesses: @number_of_guesses,
+                                   lines: @lines,
+                                   guessed_letters: @guessed_letters
+                                 })
+    file = File.open('save.json', 'w')
+    file.puts(serialized_class)
+    file.close
   end
 
   def word_guessed?
