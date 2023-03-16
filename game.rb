@@ -11,7 +11,6 @@ class Game
     @number_of_guesses = 10
     @lines = '_' * word.length
     @guessed_letters = ''
-    puts @word
   end
 
   def to_json(*_args)
