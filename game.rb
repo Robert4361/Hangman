@@ -45,6 +45,8 @@ class Game
       puts "Guessed letters: #{@guessed_letters}"
       puts "Guesses left: #{@number_of_guesses}"
       puts @lines
+      break if save_game
+
       guess
     end
     puts 'Congratulations, you won!' if word_guessed?
@@ -68,6 +70,16 @@ class Game
     puts 'Do you want to load your last game? 1-yes, 0-no'
     load = gets.chomp
     from_json if load == '1'
+  end
+
+  def save_game
+    puts 'Do you want to save your game? 1-yes, 0-no'
+    load = gets.chomp
+    if load == '1'
+      to_json
+      return true
+    end
+    false
   end
 
   def guess_letter
